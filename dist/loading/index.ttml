@@ -1,0 +1,16 @@
+<view
+  class="van-loading custom-class"
+  style="width: {{ size }}; height: {{ size }}"
+>
+  <view
+    class="van-loading__spinner van-loading__spinner--{{ type }}"
+    style="color: {{ color }};"
+  >
+    <view
+      tt:if="{{ type === 'spinner' }}"
+      tt:for="item in 12"
+      tt:key="index"
+      class="van-loading__dot"
+    />
+  </view>
+</view>

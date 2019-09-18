@@ -1,8 +1,6 @@
-<wxs src="../wxs/utils.wxs" module="utils" />
-
 <view
   wx:if="{{ animated || inited }}"
-  class="custom-class {{ utils.bem('tab__pane', { active, inactive: !active }) }}"
+  class="custom-class van-tab__pane {{active?'van-tab__pane--active':'van-tab__pane--inactive'}}"
   style="{{ animated || active ? '' : 'display: none;' }} {{ width ? 'width:' + width + 'px;' : '' }}"
 >
   <slot />

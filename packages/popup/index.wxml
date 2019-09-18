@@ -1,5 +1,3 @@
-<wxs src="../wxs/utils.wxs" module="utils" />
-
 <van-overlay
   wx:if="{{ overlay }}"
   mask
@@ -11,10 +9,14 @@
 />
 <view
   wx:if="{{ inited }}"
-  class="custom-class {{ classes }} {{ utils.bem('popup', [position, { safe: isIPhoneX && safeAreaInsetBottom }]) }}"
+  class="custom-class {{ classes }} van-popup van-popup--{{position}} {{isIPhoneX && safeAreaInsetBottom?'van-popup--safe':''}}"
   style="z-index: {{ zIndex }}; -webkit-transition-duration:{{ currentDuration }}ms; transition-duration:{{ currentDuration }}ms; {{ display ? '' : 'display: none;' }} {{ customStyle }}"
   bind:transitionend="onTransitionEnd"
 >
-  <view wx:if="{{ safeAreaInsetTop }}" class="van-popup__safe-top" style="padding-top: {{ statusBarHeight }}px;"></view>
+  <view
+    wx:if="{{ safeAreaInsetTop }}"
+    class="van-popup__safe-top"
+    style="padding-top: {{ statusBarHeight }}px;"
+  ></view>
   <slot />
 </view>

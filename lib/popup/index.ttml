@@ -1,0 +1,22 @@
+<van-overlay
+  tt:if="{{ overlay }}"
+  mask
+  show="{{ show }}"
+  z-index="{{ zIndex }}"
+  custom-style="{{ overlayStyle }}"
+  duration="{{ duration }}"
+  bind:click="onClickOverlay"
+/>
+<view
+  tt:if="{{ inited }}"
+  class="custom-class {{ classes }} van-popup van-popup--{{position}} {{isIPhoneX && safeAreaInsetBottom?'van-popup--safe':''}}"
+  style="z-index: {{ zIndex }}; -webkit-transition-duration:{{ currentDuration }}ms; transition-duration:{{ currentDuration }}ms; {{ display ? '' : 'display: none;' }} {{ customStyle }}"
+  bind:transitionend="onTransitionEnd"
+>
+  <view
+    tt:if="{{ safeAreaInsetTop }}"
+    class="van-popup__safe-top"
+    style="padding-top: {{ statusBarHeight }}px;"
+  ></view>
+  <slot />
+</view>

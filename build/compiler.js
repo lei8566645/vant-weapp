@@ -4,6 +4,7 @@ const less = require('gulp-less');
 const insert = require('gulp-insert');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
+const replace = require('gulp-replace');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -27,12 +28,12 @@ const lessCompiler = dist =>
       .pipe(
         insert.transform((contents, file) => {
           if (!file.path.includes('packages' + path.sep + 'common')) {
-            contents = `@import '../common/index.wxss';${contents}`;
+            contents = `@import '../common/index.ttss';${contents}`;
           }
           return contents;
         })
       )
-      .pipe(rename({ extname: '.wxss' }))
+      .pipe(rename({ extname: '.ttss' }))
       .pipe(gulp.dest(dist));
   };
 
@@ -42,6 +43,15 @@ const tsCompiler = (dist, config) =>
     await exec(`npx tscpaths -p ${config} -s ../packages -o ${dist}`);
   };
 
+const wxmlCompiler = dist =>
+  function compileWxml() {
+    return gulp
+      .src(`${src}/**/*.wxml`)
+      .pipe(replace('wx:', 'tt:'))
+      .pipe(rename({ extname: '.ttml' }))
+      .pipe(gulp.dest(dist));
+  };
+
 const copier = (dist, ext) =>
   function copy() {
     return gulp.src(`${src}/**/*.${ext}`).pipe(gulp.dest(dist));
@@ -49,7 +59,7 @@ const copier = (dist, ext) =>
 
 const staticCopier = dist =>
   gulp.parallel(
-    copier(dist, 'wxml'),
+    // copier(dist, 'wxml'),
     copier(dist, 'wxs'),
     copier(dist, 'json')
   );
@@ -68,7 +78,8 @@ const tasks = [
     gulp.parallel(
       tsCompiler(...args),
       lessCompiler(...args),
-      staticCopier(...args)
+      staticCopier(...args),
+      wxmlCompiler(...args)
     )
   );
   return prev;

@@ -1,0 +1,57 @@
+<view class="custom-class van-tabs van-tabs--{{ type }}">
+  <view
+    style="z-index: {{ zIndex }}; {{ wrapStyle }}"
+    class="van-tabs__wrap {{ scrollable ? 'van-tabs__wrap--scrollable' : '' }} {{ type === 'line' && border ? 'van-hairline--top-bottom' : '' }}"
+  >
+    <slot name="nav-left" />
+
+    <scroll-view
+      scroll-x="{{ scrollable }}"
+      scroll-with-animation
+      scroll-left="{{ scrollLeft }}"
+      class="van-tabs__scroll--{{ type }}"
+      style="{{ color ? 'border-color: ' + color : '' }}"
+    >
+      <view class="van-tabs__nav van-tabs__nav--{{ type }} nav-class">
+        <view
+          tt:if="{{ type === 'line' }}"
+          class="van-tabs__line"
+          style="{{ lineStyle }}"
+        />
+        <view
+          tt:for="{{ tabs }}"
+          tt:key="index"
+          data-index="{{ index }}"
+          class="van-ellipsis tab-class {{ index === active ? 'tab-active-class' : '' }} van-tab {{ index === active?'van-tab--active':''}} {{item.disabled?'van-tab--disabled':''}}"
+          style="{{ color && index !== active && type === 'card' && !item.disabled ? 'color: ' + color : '' }} {{ color && index === active && type === 'card' ? ';background-color:' + color : '' }} {{ color ? ';border-color: ' + color : '' }} {{ scrollable ? ';flex-basis:' + (88 / swipeThreshold) + '%' : '' }}"
+          bind:tap="onTap"
+        >
+          <view
+            class="van-ellipsis van-tab__title {{item.dot?'van-tab__title--dot':''}}"
+            style="{{ item.titleStyle }}"
+          >
+            {{ item.title }}
+            <van-info
+              tt:if="{{ item.info !== null }}"
+              info="{{ item.info }}"
+              custom-class="van-tab__title__info"
+            />
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <slot name="nav-right" />
+  </view>
+  <view
+    class="van-tabs__content"
+    bind:touchstart="onTouchStart"
+    bind:touchmove="onTouchMove"
+    bind:touchend="onTouchEnd"
+    bind:touchcancel="onTouchEnd"
+  >
+    <view class="van-tabs__track" style="{{ trackStyle }}">
+      <slot />
+    </view>
+  </view>
+</view>
