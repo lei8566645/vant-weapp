@@ -2,6 +2,15 @@
   transition-timing-function: ease;
 }
 
+// 字节跳动小程序不支持外部样式类 和 addGlobalClass 配置，做如下兼容
+.van-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .van-fade-enter-active,
 .van-fade-leave-active {
   transition-property: opacity;
