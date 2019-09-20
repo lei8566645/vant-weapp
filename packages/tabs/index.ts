@@ -4,10 +4,10 @@ import { Weapp } from 'definitions/weapp';
 import { nextTick } from '../common/utils';
 
 type TabItemData = {
-  width?: number
-  active: boolean
-  inited?: boolean
-  animated?: boolean
+  width?: number;
+  active: boolean;
+  inited?: boolean;
+  animated?: boolean;
 };
 
 type Position = 'top' | 'bottom' | '';
@@ -38,6 +38,7 @@ VantComponent({
     sticky: Boolean,
     animated: Boolean,
     swipeable: Boolean,
+    // 底部条宽度 (px)
     lineWidth: {
       type: Number,
       value: -1
@@ -46,6 +47,7 @@ VantComponent({
       type: Number,
       value: -1
     },
+    // 当前激活标签的索引
     active: {
       type: Number,
       value: 0
@@ -112,6 +114,7 @@ VantComponent({
     this.getRect('.van-tabs__wrap').then(
       (rect: WechatMiniprogram.BoundingClientRectCallbackResult) => {
         this.navHeight = rect.height;
+        // 如果设置了 sticky，需要观察内容滚动
         this.observerContentScroll();
       }
     );
@@ -166,10 +169,12 @@ VantComponent({
 
       this.getRect('.van-tab', true).then(
         (rects: WechatMiniprogram.BoundingClientRectCallbackResult[]) => {
-          const rect = rects[active];
+          const rect = rects[active]; // 获取当前激活标签的 rect
+          // 没有手动设置lineWidth的话，就将线的宽度设置为 tab 的一半
           const width = lineWidth !== -1 ? lineWidth : rect.width / 2;
           const height = lineHeight !== -1 ? `height: ${lineHeight}px;` : '';
 
+          // 计算线的屏幕位置，即线的开始端距整个tab最左边的距离
           let left = rects
             .slice(0, active)
             .reduce((prev, curr) => prev + curr.width, 0);
@@ -215,30 +220,35 @@ VantComponent({
 
           const props = { width, animated };
 
-          this.child.forEach((item: WechatMiniprogram.Component.TrivialInstance) => {
-            item.set(props);
-          });
+          this.child.forEach(
+            (item: WechatMiniprogram.Component.TrivialInstance) => {
+              item.set(props);
+            }
+          );
         }
       );
     },
 
     setActiveTab() {
-      this.child.forEach((item: WechatMiniprogram.Component.TrivialInstance, index: number) => {
-        const data: TabItemData = {
-          active: index === this.data.active
-        };
+      this.child.forEach(
+        (item: WechatMiniprogram.Component.TrivialInstance, index: number) => {
+          const data: TabItemData = {
+            active: index === this.data.active
+          };
 
-        if (data.active) {
-          data.inited = true;
-        }
+          if (data.active) {
+            data.inited = true;
+          }
 
-        if (data.active !== item.data.active) {
-          item.set(data);
+          if (data.active !== item.data.active) {
+            item.set(data);
+          }
         }
-      });
+      );
 
       nextTick(() => {
         this.setLine();
+        // 设置了animated才起作用
         this.setTrack();
         this.scrollIntoView();
       });
@@ -257,8 +267,8 @@ VantComponent({
         this.getRect('.van-tabs__nav')
       ]).then(
         ([tabRects, navRect]: [
-        WechatMiniprogram.BoundingClientRectCallbackResult[],
-        WechatMiniprogram.BoundingClientRectCallbackResult
+          WechatMiniprogram.BoundingClientRectCallbackResult[],
+          WechatMiniprogram.BoundingClientRectCallbackResult
         ]) => {
           const tabRect = tabRects[active];
           const offsetLeft = tabRects
@@ -304,8 +314,8 @@ VantComponent({
 
     setWrapStyle() {
       const { offsetTop, position } = this.data as {
-        offsetTop: number
-        position: Position
+        offsetTop: number;
+        position: Position;
       };
       let wrapStyle: string;
 
@@ -346,43 +356,49 @@ VantComponent({
       // @ts-ignore
       this.createIntersectionObserver()
         .relativeToViewport({ top: -(this.navHeight + offsetTop) })
-        .observe('.van-tabs', (res: WechatMiniprogram.ObserveCallbackResult) => {
-          const { top } = res.boundingClientRect;
+        .observe(
+          '.van-tabs',
+          (res: WechatMiniprogram.ObserveCallbackResult) => {
+            const { top } = res.boundingClientRect;
 
-          if (top > offsetTop) {
-            return;
+            if (top > offsetTop) {
+              return;
+            }
+
+            const position: Position =
+              res.intersectionRatio > 0 ? 'top' : 'bottom';
+
+            this.$emit('scroll', {
+              scrollTop: top + offsetTop,
+              isFixed: position === 'top'
+            });
+
+            this.setPosition(position);
           }
-
-          const position: Position =
-            res.intersectionRatio > 0 ? 'top' : 'bottom';
-
-          this.$emit('scroll', {
-            scrollTop: top + offsetTop,
-            isFixed: position === 'top'
-          });
-
-          this.setPosition(position);
-        });
+        );
 
       // @ts-ignore
       this.createIntersectionObserver()
         .relativeToViewport({ bottom: -(windowHeight - 1 - offsetTop) })
-        .observe('.van-tabs', (res: WechatMiniprogram.ObserveCallbackResult) => {
-          const { top, bottom } = res.boundingClientRect;
+        .observe(
+          '.van-tabs',
+          (res: WechatMiniprogram.ObserveCallbackResult) => {
+            const { top, bottom } = res.boundingClientRect;
 
-          if (bottom < this.navHeight) {
-            return;
+            if (bottom < this.navHeight) {
+              return;
+            }
+
+            const position: Position = res.intersectionRatio > 0 ? 'top' : '';
+
+            this.$emit('scroll', {
+              scrollTop: top + offsetTop,
+              isFixed: position === 'top'
+            });
+
+            this.setPosition(position);
           }
-
-          const position: Position = res.intersectionRatio > 0 ? 'top' : '';
-
-          this.$emit('scroll', {
-            scrollTop: top + offsetTop,
-            isFixed: position === 'top'
-          });
-
-          this.setPosition(position);
-        });
+        );
     },
 
     setPosition(position: Position) {
