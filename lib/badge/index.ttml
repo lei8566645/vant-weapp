@@ -3,6 +3,7 @@
   hover-class="van-badge--hover"
   hover-stay-time="70"
   bind:tap="onClick"
+  style="color: {{ active ? primaryColor || '#CF0A2C' : ''}};border-color: {{ active ? primaryColor || '#CF0A2C' : '' }}"
 >
   <view class="van-badge__text">
     <van-info

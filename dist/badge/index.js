@@ -9,7 +9,8 @@ VantComponent({
     },
     props: {
         info: null,
-        title: String
+        title: String,
+        primaryColor: String
     },
     methods: {
         onClick() {

@@ -1,7 +1,5 @@
-<wxs src="../wxs/utils.wxs" module="utils" />
-
 <view
-  class="custom-class {{ utils.bem('cell', [size, { center, required, borderless: !border, clickable: isLink || clickable }]) }}"
+  class="custom-class van-cell van-cell--{{size}} {{center?'van-cell--center':''}} {{required?'van-cell--required':''}} {{!border?'van-cell--borderless':''}} {{(isLink || clickable)?'van-cell--clickable':''}}"
   hover-class="van-cell--hover hover-class"
   hover-stay-time="70"
   style="{{ customStyle }}"
@@ -22,7 +20,10 @@
     <block tt:if="{{ title }}">{{ title }}</block>
     <slot tt:else name="title" />
 
-    <view tt:if="{{ label || useLabelSlot }}" class="van-cell__label label-class">
+    <view
+      tt:if="{{ label || useLabelSlot }}"
+      class="van-cell__label label-class"
+    >
       <slot tt:if="{{ useLabelSlot }}" name="label" />
       <block tt:elif="{{ label }}">{{ label }}</block>
     </view>

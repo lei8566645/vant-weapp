@@ -1,8 +1,6 @@
-<wxs src="../wxs/utils.wxs" module="utils" />
-
 <view
   tt:if="{{ show }}"
-  class="custom-class {{ utils.bem('notice-bar', { withicon: mode, wrapable }) }}"
+  class="custom-class van-notice-bar {{mode?'van-notice-bar--withicon':''}} {{wrapable?'van-notice-bar--wrapable':''}}"
   style="color: {{ color }}; background-color: {{ backgroundColor }};"
   bind:tap="onClick"
 >
@@ -14,9 +12,10 @@
   />
 
   <view class="van-notice-bar__wrap">
-    <view class="van-notice-bar__content {{ !scrollable && !wrapable ? 'van-ellipsis' : '' }}" animation="{{ animationData }}">
-      {{ text }}
-    </view>
+    <view
+      class="van-notice-bar__content {{ !scrollable && !wrapable ? 'van-ellipsis' : '' }}"
+      animation="{{ animationData }}"
+    >{{ text }}</view>
   </view>
 
   <van-icon

@@ -1,5 +1,3 @@
-<wxs src="../wxs/utils.wxs" module="utils" />
-
 <van-cell
   icon="{{ leftIcon }}"
   title="{{ label }}"
@@ -14,10 +12,12 @@
 >
   <slot name="left-icon" slot="icon" />
   <slot name="label" slot="title" />
-  <view class="{{ utils.bem('field__body', [type, system]) }}">
+  <view
+    class="van-field__body van-field__body--{{type}} van-field__body--{{system}}"
+  >
     <textarea
       tt:if="{{ type === 'textarea' }}"
-      class="input-class {{ utils.bem('field__input', [inputAlign, type, { disabled, error }]) }}"
+      class="input-class van-field__input van-field__input--{{inputAlign}} van-field__input--{{type}} {{disabled?'van-field__input--disabled':''}} {{error?'van-field__input--error':''}}"
       fixed="{{ fixed }}"
       focus="{{ focus }}"
       value="{{ value }}"
@@ -25,7 +25,7 @@
       maxlength="{{ maxlength }}"
       placeholder="{{ placeholder }}"
       placeholder-style="{{ placeholderStyle }}"
-      placeholder-class="{{ utils.bem('field__placeholder', { error }) }}"
+      placeholder-class="van-field__placeholder {{error?'van-field__placeholder--error':''}}"
       auto-height="{{ autosize }}"
       cursor-spacing="{{ cursorSpacing }}"
       adjust-position="{{ adjustPosition }}"
@@ -36,11 +36,10 @@
       bind:blur="onBlur"
       bind:focus="onFocus"
       bind:confirm="onConfirm"
-    >
-    </textarea>
+    ></textarea>
     <input
       tt:else
-      class="input-class {{ utils.bem('field__input', [inputAlign, { disabled, error }]) }}"
+      class="input-class van-field__input van-field__input--{{inputAlign}} {{disabled?'van-field__input--disabled':''}} {{error?'van-field__input--error':''}}"
       type="{{ type }}"
       focus="{{ focus }}"
       value="{{ value }}"
@@ -48,7 +47,7 @@
       maxlength="{{ maxlength }}"
       placeholder="{{ placeholder }}"
       placeholder-style="{{ placeholderStyle }}"
-      placeholder-class="{{ utils.bem('field__placeholder', { error }) }}"
+      placeholder-class="van-field__placeholder {{error?'van-field__placeholder--error':''}}"
       confirm-type="{{ confirmType }}"
       confirm-hold="{{ confirmHold }}"
       cursor-spacing="{{ cursorSpacing }}"
@@ -83,7 +82,8 @@
       <slot name="button" />
     </view>
   </view>
-  <view tt:if="{{ errorMessage }}" class="van-field__error-message {{ utils.bem('field__error', [errorMessageAlign, { disabled, error }]) }}">
-    {{ errorMessage }}
-  </view>
+  <view
+    tt:if="{{ errorMessage }}"
+    class="van-field__error-message van-field__error van-field__error--{{errorMessageAlign}} {{disabled?'van-field__error--disabled':''}} {{error?'van-field__error--error':''}}"
+  >{{ errorMessage }}</view>
 </van-cell>
