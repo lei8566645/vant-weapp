@@ -51,7 +51,7 @@ VantComponent({
         },
         maxlength: {
             type: Number,
-            value: -1
+            value: 140
         },
         type: {
             type: String,
@@ -68,7 +68,10 @@ VantComponent({
     },
     data: {
         focused: false,
-        system: getSystemInfoSync().system.split(' ').shift().toLowerCase()
+        system: getSystemInfoSync()
+            .system.split(' ')
+            .shift()
+            .toLowerCase()
     },
     methods: {
         onInput(event) {

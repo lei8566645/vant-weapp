@@ -9,9 +9,7 @@
       hover-stay-time="70"
       data-type="cancel"
       bindtap="emit"
-    >
-      {{ cancelButtonText }}
-    </view>
+    >{{ cancelButtonText }}</view>
     <view tt:if="{{ title }}" class="van-picker__title van-ellipsis">{{ title }}</view>
     <view
       class="van-picker__confirm"
@@ -19,12 +17,10 @@
       hover-stay-time="70"
       data-type="confirm"
       bindtap="emit"
-    >
-      {{ confirmButtonText }}
-    </view>
+    >{{ confirmButtonText }}</view>
   </view>
   <view tt:if="{{ loading }}" class="van-picker__loading">
-    <loading color="#1989fa"/>
+    <loading color="#1989fa" />
   </view>
   <view
     class="van-picker__columns"
@@ -33,12 +29,12 @@
   >
     <picker-column
       class="van-picker__column"
-      tt:for="{{ isSimple(columns) ? [columns] : columns }}"
+      tt:for="{{ (columns.length && !columns[0].values) ? [columns] : columns }}"
       tt:key="{{ index }}"
       data-index="{{ index }}"
       custom-class="column-class"
       value-key="{{ valueKey }}"
-      initial-options="{{ isSimple(columns) ? item : item.values }}"
+      initial-options="{{ (columns.length && !columns[0].values) ? item : item.values }}"
       default-index="{{ item.defaultIndex || defaultIndex }}"
       item-height="{{ itemHeight }}"
       visible-item-count="{{ visibleItemCount }}"
@@ -51,10 +47,3 @@
     />
   </view>
 </view>
-
-<wxs module="isSimple">
-  function isSimple(columns) {
-    return columns.length && !columns[0].values;
-  }
-  module.exports = isSimple;
-</wxs>

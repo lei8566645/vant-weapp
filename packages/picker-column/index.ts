@@ -32,7 +32,13 @@ VantComponent({
   },
 
   created() {
-    const { defaultIndex, initialOptions } = this.data;
+    const { defaultIndex, initialOptions, valueKey } = this.data;
+
+    const options = initialOptions.map(item => {
+      const type = typeof item;
+      const isObj = item !== null && (type === 'object' || type === 'function');
+      return isObj && item[valueKey] != null ? item[valueKey] : item;
+    });
 
     this.set({
       currentIndex: defaultIndex,
