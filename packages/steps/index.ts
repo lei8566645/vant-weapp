@@ -13,6 +13,11 @@ VantComponent({
     activeColor: {
       type: String,
       value: GREEN
-    }
+    },
+    activeIcon: {
+      type: String,
+      value: 'checked'
+    },
+    inactiveIcon: String
   }
 });

@@ -1,7 +1,7 @@
 # Checkbox 复选框
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -9,7 +9,6 @@
   "van-checkbox-group": "path/to/vant-weapp/dist/checkbox-group/index"
 }
 ```
-
 
 ## 代码演示
 
@@ -188,27 +187,30 @@ Page({
 }
 ```
 
+## API
+
 ### Checkbox API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 标识 Checkbox 名称 | `String` | - |
-| shape | 形状，可选值为 `round` `square` | `String` | `round` |
-| value | 是否为选中状态 | `Boolean` | `false` |
-| disabled | 是否禁用单选框 | `Boolean` | `false` |
-| label-disabled | 是否禁用单选框内容点击 | `Boolean` | `false` |
-| label-position | 文本位置，可选值为 `left` | `String` | `right` |
-| use-icon-slot | 是否使用 icon slot | `Boolean` | `false` |
-| checked-color | 选中状态颜色 | `String` | `#1989fa` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 标识 Checkbox 名称 | *string* | - | - |
+| shape | 形状，可选值为 `round` `square` | *string* | `round` | - |
+| value | 是否为选中状态 | *boolean* | `false` | - |
+| disabled | 是否禁用单选框 | *boolean* | `false` | - |
+| label-disabled | 是否禁用单选框内容点击 | *boolean* | `false` | - |
+| label-position | 文本位置，可选值为 `left` | *string* | `right` | - |
+| use-icon-slot | 是否使用 icon slot | *boolean* | `false` | - |
+| checked-color | 选中状态颜色 | *string* | `#1989fa` | - |
+| icon-size | icon 大小 | *string \| number* | `20px` |
 
 ### CheckboxGroup API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 在表单内提交时的标识符 | `String` | - |
-| value | 所有选中项的 name | `Array` | - |
-| disabled | 是否禁用所有单选框 | `Boolean` | `false` |
-| max | 设置最大可选数 | `Number` | `0`（无限制） |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 在表单内提交时的标识符 | *string* | - | - |
+| value | 所有选中项的 name | *Array* | - | - |
+| disabled | 是否禁用所有单选框 | *boolean* | `false` | - |
+| max | 设置最大可选数 | *number* | `0`（无限制） | - |
 
 ### Checkbox Event
 

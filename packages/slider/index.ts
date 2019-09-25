@@ -1,6 +1,7 @@
 import { VantComponent } from '../common/component';
 import { touch } from '../mixins/touch';
 import { Weapp } from 'definitions/weapp';
+import { addUnit } from '../common/utils';
 
 VantComponent({
   mixins: [touch],
@@ -27,7 +28,7 @@ VantComponent({
       value: 0
     },
     barHeight: {
-      type: String,
+      type: null,
       value: '2px'
     }
   },
@@ -48,12 +49,19 @@ VantComponent({
 
       this.touchStart(event);
       this.startValue = this.format(this.data.value);
+      this.dragStatus = 'start';
     },
 
     onTouchMove(event: Weapp.TouchEvent) {
       if (this.data.disabled) return;
 
+      if (this.dragStatus === 'start') {
+        this.$emit('drag-start');
+      }
+
       this.touchMove(event);
+      this.dragStatus = 'draging';
+
       this.getRect('.van-slider').then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => {
         const diff = this.deltaX / rect.width * 100;
         this.newValue = this.startValue + diff;
@@ -63,24 +71,32 @@ VantComponent({
 
     onTouchEnd() {
       if (this.data.disabled) return;
-      this.updateValue(this.newValue, true);
+
+      if (this.dragStatus === 'draging') {
+        this.updateValue(this.newValue, true);
+        this.$emit('drag-end');
+      }
     },
 
     onClick(event: Weapp.TouchEvent) {
       if (this.data.disabled) return;
 
+      const { min } = this.data;
+
       this.getRect('.van-slider').then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => {
-        const value = (event.detail.x - rect.left) / rect.width * 100;
+        const value = (event.detail.x - rect.left) / rect.width * this.getRange() + min;
         this.updateValue(value, true);
       });
     },
 
     updateValue(value: number, end: boolean, drag: boolean) {
       value = this.format(value);
+      const { barHeight, min } = this.data;
+      const width = `${((value - min) * 100) / this.getRange()}%`;
 
-      this.set({
+      this.setData({
         value,
-        barStyle: `width: ${value}%; height: ${this.data.barHeight};`
+        barStyle: `width: ${width}; height: ${addUnit(barHeight)};`
       });
 
       if (drag) {
@@ -90,6 +106,11 @@ VantComponent({
       if (end) {
         this.$emit('change', value);
       }
+    },
+
+    getRange() {
+      const { max, min } = this.data;
+      return max - min;
     },
 
     format(value: number) {

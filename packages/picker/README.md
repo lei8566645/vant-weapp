@@ -5,7 +5,7 @@
 选择器组件通常与 [弹出层](#/popup) 组件配合使用
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -134,26 +134,30 @@ Page({
 ```
 
 ### 加载状态
+
 当 Picker 数据是通过异步获取时，可以通过 `loading` 属性显示加载提示
 
 ```html
 <van-picker columns="{{ columns }}" loading />
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|------|------|
-| columns | 对象数组，配置每一列显示的数据 | `Array` | `[]` |
-| show-toolbar | 是否显示顶部栏 | `Boolean` | `false` |
-| title | 顶部栏标题 | `String` | `''` |
-| loading | 是否显示加载状态 | `Boolean` | `false` |
-| value-key | 选项对象中，文字对应的 key | `String` | `text` |
-| item-height | 选项高度 | `Number` | `44` |
-| confirm-button-text | 确认按钮文字 | `String` | `确认` |
-| cancel-button-text | 取消按钮文字 | `String` | `取消` |
-| visible-item-count | 可见的选项个数 | `Number` | `5` |
-| default-index | 单列选择器的默认选中项索引，<br>多列选择器请参考下方的 Columns 配置 | `Number` | `0` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|------|------|------|------|------|
+| columns | 对象数组，配置每一列显示的数据 | *Array* | `[]` | - |
+| show-toolbar | 是否显示顶部栏 | *boolean* | `false` | - |
+| toolbar-position | 顶部栏位置，可选值为`bottom` | *string* | `top` | - |
+| title | 顶部栏标题 | *string* | `''` | - |
+| loading | 是否显示加载状态 | *boolean* | `false` | - |
+| value-key | 选项对象中，文字对应的 key | *string* | `text` | - |
+| item-height | 选项高度 | *number* | `44` | - |
+| confirm-button-text | 确认按钮文字 | *string* | `确认` | - |
+| cancel-button-text | 取消按钮文字 | *string* | `取消` | - |
+| visible-item-count | 可见的选项个数 | *number* | `5` | - |
+| default-index | 单列选择器的默认选中项索引，<br>多列选择器请参考下方的 Columns 配置 | *number* | `0` | - |
 
 ### Events
 
@@ -164,7 +168,6 @@ Picker 组件的事件会根据 columns 是单列或多列返回不同的参数
 | confirm | 点击完成按钮时触发 | 单列：选中值，选中值对应的索引<br>多列：所有列选中值，所有列选中值对应的索引 |
 | cancel | 点击取消按钮时触发 | 单列：选中值，选中值对应的索引<br>多列：所有列选中值，所有列选中值对应的索引 |
 | change | 选项改变时触发 | 单列：Picker 实例，选中值，选中值对应的索引<br>多列：Picker 实例，所有列选中值，当前列对应的索引 |
-
 
 ### Columns 数据结构
 

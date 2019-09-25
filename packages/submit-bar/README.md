@@ -1,7 +1,8 @@
 # SubmitBar 提交订单栏
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -22,6 +23,7 @@
 ```
 
 ### 禁用状态
+
 禁用状态下不会触发`submit`事件
 
 ```html
@@ -36,6 +38,7 @@
 ```
 
 ### 加载状态
+
 加载状态下不会触发`submit`事件
 
 ```html
@@ -48,6 +51,7 @@
 ```
 
 ### 高级用法
+
 通过插槽插入自定义内容
 
 ```html
@@ -64,22 +68,24 @@
 </van-submit-bar>
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| price | 价格（单位分） |  `Number` | - |
-| label | 价格文案 |  `String` | `合计：` |
-| suffix-label | 价格右侧文案 | `String` | - |
-| button-text | 按钮文字 | `String` | - |
-| button-type | 按钮类型 |  `String` | `danger` |
-| tip | 提示文案 |  `String` / `Boolean` | - |
-| tip-icon | 图标名称或图片链接，可选值见 Icon 组件 | `String` | - |
-| disabled | 是否禁用按钮 |  `Boolean` | `false` |
-| loading | 是否显示加载中的按钮 |  `Boolean` | `false` |
-| currency | 货币符号 |  `String` | `¥` |
-| safe-area-inset-bottom | 是否为 iPhoneX 留出底部安全距离 | `Boolean` | `true` |
-| decimal-length | 价格小数点后位数 | `Number` | `2` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| price | 价格（单位分） | *number* | - | - |
+| label | 价格文案 | *string* | `合计：` | - |
+| suffix-label | 价格右侧文案 | *string* | - | - |
+| button-text | 按钮文字 | *string* | - | - |
+| button-type | 按钮类型 |  *string* | `danger` | - |
+| tip | 提示文案 | *string \| boolean* | - | - |
+| tip-icon | 图标名称或图片链接，可选值见 [Icon 组件](/#/icon) | *string* | - | - |
+| disabled | 是否禁用按钮 | *boolean* | `false` | - |
+| loading | 是否显示加载中的按钮 | *boolean* | `false` | - |
+| currency | 货币符号 | *string* | `¥` | - |
+| safe-area-inset-bottom | 是否为 iPhoneX 留出底部安全距离 | *boolean* | `true` | - |
+| decimal-length | 价格小数点后位数 | *number* | `2` | - |
 
 ### Events
 

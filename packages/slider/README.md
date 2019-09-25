@@ -1,7 +1,8 @@
 # Slider 滑块
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -29,7 +30,7 @@ Page({
 ### 指定选择范围
 
 ```html
-<van-slider value="50" min="10" max="90" />
+<van-slider min="-50" max="50" />
 ```
 
 ### 禁用
@@ -50,7 +51,7 @@ Page({
 <van-slider
   value="50"
   bar-height="4px"
-  active-color="#f44"
+  active-color="#ee0a24"
 />
 ```
 
@@ -82,18 +83,20 @@ Page({
 });
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| value | 当前进度百分比，取值范围为 0-100 | `Number` | `0` |
-| disabled | 是否禁用滑块 | `Boolean` | `false` |
-| max | 最大值 | `Number` | `100` |
-| min | 最小值 | `Number` | `0` |
-| step | 步长 | `Number` | `1` |
-| bar-height | 进度条高度 | `String` | `2px` |
-| active-color | 进度条激活态颜色 | `String` | `#1989fa` |
-| inactive-color | 进度条默认颜色 | `String` | `#e5e5e5` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| value | 当前进度百分比，取值范围为 0-100 | *number* | `0` | - |
+| disabled | 是否禁用滑块 | *boolean* | `false` | - |
+| max | 最大值 | *number* | `100` | - |
+| min | 最小值 | *number* | `0` | - |
+| step | 步长 | *number* | `1` | - |
+| bar-height | 进度条高度，默认单位为 `px` | *string \| number* | `2px` | - |
+| active-color | 进度条激活态颜色 | *string* | `#1989fa` | - |
+| inactive-color | 进度条默认颜色 | *string* | `#e5e5e5` | - |
 
 ### Events
 
@@ -101,6 +104,8 @@ Page({
 |-----------|-----------|-----------|
 | bind:drag | 拖动进度条时触发 | event.detail.value: 当前进度 |
 | bind:change | 进度值改变后触发 | event.detail: 当前进度 |
+| bind:drag-start | 开始拖动时触发 | - |
+| bind:drag-end | 结束拖动时触发 | - |
 
 ### 外部样式类
 

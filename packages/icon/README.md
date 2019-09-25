@@ -1,8 +1,12 @@
 # Icon 图标
 
+### 介绍
+
+基于字体的图标集，可以通过 Icon 组件使用，也可以在其他组件中通过`icon`属性引用
+
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -21,23 +25,29 @@
 <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" />
 ```
 
-### 显示徽标
+### 提示信息
 
- ```html
+设置`dot`属性后，会在图标右上角展示一个小红点。设置`info`属性后，会在图标右上角展示相应的徽标
+
+```html
+<van-icon name="chat" dot />
 <van-icon name="chat" info="9" />
 <van-icon name="chat" info="99+" />
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 图标名称或图片链接 | `String` | - |
-| info | 图标右上角文字提示 | `String | Number` | - |
-| color | 图标颜色 | `String` | `inherit` |
-| size | 图标大小，如 `20px`，`2em` | `String` | `inherit` |
-| custom-style | 自定义样式 | `String` | - |
-| class-prefix | 类名前缀 | `String` | `van-icon` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 图标名称或图片链接 | *string* | - | - |
+| dot | 是否显示图标右上角小红点 | *boolean* | `false` | - |
+| info | 图标右上角文字提示 | *string \| number* | - | - |
+| color | 图标颜色 | *string* | `inherit` | - |
+| size | 图标大小，如 `20px`，`2em`，默认单位为`px` | *string \| number* | `inherit` | - |
+| custom-style | 自定义样式 | *string* | - | - |
+| class-prefix | 类名前缀 | *string* | `van-icon` | - |
 
 ### Events
 

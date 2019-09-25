@@ -2,14 +2,13 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
   "van-nav-bar": "path/to/vant-weapp/dist/nav-bar/index"
 }
 ```
-
 
 ## 代码演示
 
@@ -46,19 +45,20 @@ Page({
 </van-nav-bar>
 ```
 
+## API
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| title | 标题 | `String` | `''` |
-| left-text | 左侧文案 | `String` | `''` |
-| right-text | 右侧文案 | `String` | `''` |
-| left-arrow | 是否显示左侧箭头 | `Boolean` | `false` |
-| fixed | 是否固定在顶部 | `Boolean` | `false` |
-| border | 是否显示下边框 | `Boolean` | `true` |
-| z-index | 元素 z-index | `Number` | `1` |
-| safe-area-inset-top | 是否留出顶部安全距离（状态栏高度） | `Boolean` | `true` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| title | 标题 | *string* | `''` | - |
+| left-text | 左侧文案 | *string* | `''` | - |
+| right-text | 右侧文案 | *string* | `''` | - |
+| left-arrow | 是否显示左侧箭头 | *boolean* | `false` | - |
+| fixed | 是否固定在顶部 | *boolean* | `false` | - |
+| border | 是否显示下边框 | *boolean* | `true` | - |
+| z-index | 元素 z-index | *number* | `1` | - |
+| safe-area-inset-top | 是否留出顶部安全距离（状态栏高度） | *boolean* | `true` | - |
 
 ### Slot
 

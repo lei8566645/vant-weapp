@@ -2,7 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -13,6 +13,7 @@
 ## 代码演示
 
 ### 基础用法
+
 将元素包裹在 transition 组件内，在元素展示/隐藏时，会有相应的过渡动画
 
 ```html
@@ -22,6 +23,7 @@
 ```
 
 ### 动画类型
+
 transition 组件内置了多种动画，可以通过`name`字段指定动画类型
 
 ```html
@@ -57,14 +59,16 @@ transition 组件内置了多种动画，可以通过`name`字段指定动画类
 }
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 动画类型 | `String` | `fade`|
-| show | 是否展示组件 | `Boolean` | `true` |
-| duration | 动画时长，单位为毫秒 | `Number | Object` | `300` |
-| custom-style | 自定义样式 | `String` | - |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 动画类型 | *string* | `fade`| - |
+| show | 是否展示组件 | *boolean* | `true` | - |
+| duration | 动画时长，单位为毫秒 | *number \| object* | `300` | - |
+| custom-style | 自定义样式 | *string* | - | - |
 
 ### 外部样式类
 

@@ -2,7 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -60,13 +60,13 @@ Page({
 通过 icon 插槽自定义图标
 
 ```html
-<van-checkbox use-icon-slot value="{{ radio }}" name="1" bind:change="onChange">
+<van-radio use-icon-slot value="{{ radio }}" name="1" bind:change="onChange">
   自定义图标
   <image
     slot="icon"
     src="{{ radio === '1' ? icon.active : icon.normal }}"
   />
-</van-checkbox>
+</van-radio>
 ```
 
 ```js
@@ -143,18 +143,21 @@ Page({
 }
 ```
 
+## API
+
 ### Radio API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 标识 Radio 名称 | `String` | - |
-| value | 当前选中项的 name | `any` | - |
-| shape | 形状，可选值为 `round` `square` | `String` | `round` |
-| disabled | 是否为禁用状态 | `Boolean` | `false` |
-| label-disabled | 是否禁用文本内容点击 | `Boolean` | `false` |
-| label-position | 文本位置，可选值为 `left` | `String` | `right` |
-| use-icon-slot | 是否使用 icon slot | `Boolean` | `false` |
-| checked-color | 选中状态颜色 | `String` | `#1989fa` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 标识 Radio 名称 | *string* | - | - |
+| value | 当前选中项的 name | *any* | - | - |
+| shape | 形状，可选值为 `round` `square` | *string* | `round` | - |
+| disabled | 是否为禁用状态 | *boolean* | `false` | - |
+| icon-size | 图标大小，默认单位为`px` | *string \| number* | `20px` | - |
+| label-disabled | 是否禁用文本内容点击 | *boolean* | `false` | - |
+| label-position | 文本位置，可选值为 `left` | *string* | `right` | - |
+| use-icon-slot | 是否使用 icon slot | *boolean* | `false` | - |
+| checked-color | 选中状态颜色 | *string* | `#1989fa` | - |
 
 ### Radio Event
 
@@ -172,11 +175,11 @@ Page({
 
 ### RadioGroup API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 在表单内提交时的标识符 | `String` | - |
-| value | 当前选中项的 name | `any` | - |
-| disabled | 是否禁用所有单选框 | `Boolean` | `false` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 在表单内提交时的标识符 | *string* | - | - |
+| value | 当前选中项的 name | *any* | - | - |
+| disabled | 是否禁用所有单选框 | *boolean* | `false` | - |
 
 ### RadioGroup Event
 

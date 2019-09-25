@@ -5,10 +5,11 @@ const { version } = packageJson;
 
 export const github = 'https://github.com/youzan/vant-weapp';
 
+export const versions = [version, '0.x'];
+
 export default {
   header: {
     logo: {
-      version,
       image: 'https://img.yzcdn.cn/vant/logo.png',
       title: 'Vant Weapp',
       href: '#/'
@@ -50,6 +51,11 @@ export default {
             {
               path: '/common',
               title: '内置样式'
+            },
+            {
+              path: '/theme',
+              title: '定制主题',
+              md: true
             }
           ]
         }

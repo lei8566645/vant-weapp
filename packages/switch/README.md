@@ -2,7 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -55,7 +55,7 @@ Page({
 <van-switch
   checked="{{ checked }}"
   active-color="#07c160"
-  inactive-color="#f44"
+  inactive-color="#ee0a24"
 />
 ```
 
@@ -88,19 +88,21 @@ Page({
 });
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| name | 在表单内提交时的标识符 | `String` | - |
-| checked | 开关选中状态 | `any` | `false` |
-| loading | 是否为加载状态 | `Boolean` | `false` |
-| disabled | 是否为禁用状态 | `Boolean` | `false` |
-| size | 开关尺寸 | `String` | `30px` |
-| active-color | 打开时的背景色 | `String` | `#1989fa` |
-| inactive-color | 关闭时的背景色 | `String` | `#fff` |
-| active-value | 打开时的值 | `any` | `true` |
-| inactive-value | 关闭时的值 | `any` | `false` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| name | 在表单内提交时的标识符 | *string* | - | - |
+| checked | 开关选中状态 | *any* | `false` | - |
+| loading | 是否为加载状态 | *boolean* | `false` | - |
+| disabled | 是否为禁用状态 | *boolean* | `false` | - |
+| size | 开关尺寸 | *string* | `30px` | - |
+| active-color | 打开时的背景色 | *string* | `#1989fa` | - |
+| inactive-color | 关闭时的背景色 | *string* | `#fff` | - |
+| active-value | 打开时的值 | *any* | `true` | - |
+| inactive-value | 关闭时的值 | *any* | `false` | - |
 
 ### Events
 

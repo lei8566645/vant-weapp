@@ -2,7 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -57,14 +57,17 @@ Page({
 });
 ```
 
+## API
+
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 |------|------|------|------|------|
-| left-width | 左侧滑动区域宽度 | `Number` | `0` | - |
-| right-width | 右侧滑动区域宽度 | `Number` | `0` | - |
-| async-close | 是否异步关闭 | `Boolean` | `false` | - |
-| disabled | 是否禁用滑动 | `Boolean` | `false` | 1.3.4 |
+| name | 标识符，可以在 close 事件的参数中获取到 | *string \| number* | - | - |
+| left-width | 左侧滑动区域宽度 | *number* | `0` | - |
+| right-width | 右侧滑动区域宽度 | *number* | `0` | - |
+| async-close | 是否异步关闭 | *boolean* | `false` | - |
+| disabled | 是否禁用滑动 | *boolean* | `false` | 1.3.4 |
 
 ### Slot
 
@@ -85,8 +88,8 @@ Page({
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| position | `String` | 关闭时的点击位置 (`left` `right` `cell` `outside`) |
-| instance | `Object` | SwipeCell 实例 |
+| position | *string* | 关闭时的点击位置 (`left` `right` `cell` `outside`) |
+| instance | *object* | SwipeCell 实例 |
 
 ### 方法
 

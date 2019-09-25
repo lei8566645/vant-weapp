@@ -1,23 +1,36 @@
-import { isObj } from '../common/utils';
+import { WHITE } from '../common/color';
 
 interface NotifyOptions {
-  text: string;
+  type?: 'primary' | 'success' | 'danger' | 'warning';
   color?: string;
-  backgroundColor?: string;
+  zIndex?: number;
+  message: string;
+  context?: any;
   duration?: number;
   selector?: string;
-  context?: any;
+  background?: string;
   safeAreaInsetTop?: boolean;
-  zIndex?: number;
+  onClick?: () => void;
+  onOpened?: () => void;
+  onClose?: () => void;
 }
 
 const defaultOptions = {
   selector: '#van-notify',
-  duration: 3000
+  type: 'danger',
+  message: '',
+  background: '',
+  duration: 3000,
+  zIndex: 110,
+  color: WHITE,
+  safeAreaInsetTop: false,
+  onClick: () => {},
+  onOpened: () => {},
+  onClose: () => {}
 };
 
-function parseOptions(text: NotifyOptions | string): NotifyOptions {
-  return isObj(text) ? (text as NotifyOptions) : ({ text } as NotifyOptions);
+function parseOptions(message: NotifyOptions | string): NotifyOptions {
+  return typeof message === 'string' ? { message } : message;
 }
 
 function getContext() {

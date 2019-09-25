@@ -1,7 +1,8 @@
 # GoodsAction 商品导航
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -10,7 +11,6 @@
   "van-goods-action-button": "path/to/vant-weapp/dist/goods-action-button/index"
 }
 ```
-
 
 ## 代码演示
 
@@ -66,59 +66,82 @@ Page({
 </van-goods-action>
 ```
 
+### 自定义按钮颜色
+
+通过`color`属性可以自定义按钮的颜色，支持传入`linear-gradient`渐变色
+
+```html
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+  <van-goods-action-icon icon="shop-o" text="店铺" />
+  <van-goods-action-button text="加入购物车" type="warning" />
+  <van-goods-action-button text="立即购买" />
+</van-goods-action>
+```
+
+## API
+
 ### GoodsAction API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| safe-area-inset-bottom | 是否为 iPhoneX 留出底部安全距离 | `Boolean` | `true` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| safe-area-inset-bottom | 是否为 iPhoneX 留出底部安全距离 | *boolean* | `true` | - |
 
 ### GoodsActionIcon API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| text | 按钮文字 | `String` | - |
-| icon | 图标类型，可选值见`icon`组件 | `String` | - |
-| info | 图标右上角提示信息 | `String | Number` | - |
-| url | 跳转链接 | `String` | - |
-| link-type | 链接跳转类型，可选值为 `redirectTo` `switchTab` `reLaunch` | `String` | `navigateTo` |
-| id | 标识符 | `String` | - |
-| disabled | 是否禁用按钮 | `Boolean` | `false` |
-| loading | 是否显示为加载状态 | `Boolean` | `false` |
-| open-type | 微信开放能力，具体支持可参考 [微信官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html) | `String` | - |
-| app-parameter | 打开 APP 时，向 APP 传递的参数 | `String` | - |
-| lang | 指定返回用户信息的语言，zh_CN 简体中文，<br>zh_TW 繁体中文，en 英文 | `String` | `en` |
-| session-from | 会话来源 | `String` | - |
-| send-message-title | 会话内消息卡片标题 | `String` | 当前标题 |
-| send-message-path | 会话内消息卡片点击跳转小程序路径 | `String` | 当前分享路径 |
-| send-message-img | sendMessageImg | `String` | 截图 |
-| show-message-card | 显示会话内消息卡片 | `String` | `false` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| text | 按钮文字 | *string* | - | - |
+| icon | 图标类型，可选值见`icon`组件 | *string* | - | - |
+| info | 图标右上角提示信息 | *string \| number* | - | - |
+| url | 点击后跳转的链接地址 | *string* | - | - |
+| link-type | 链接跳转类型，可选值为 `redirectTo` `switchTab` `reLaunch` | *string* | `navigateTo` | - |
+| id | 标识符 | *string* | - | - |
+| disabled | 是否禁用按钮 | *boolean* | `false` | - |
+| loading | 是否显示为加载状态 | *boolean* | `false` | - |
+| open-type | 微信开放能力，具体支持可参考 [微信官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html) | *string* | - | - |
+| app-parameter | 打开 APP 时，向 APP 传递的参数 | *string* | - | - |
+| lang | 指定返回用户信息的语言，zh_CN 简体中文，<br>zh_TW 繁体中文，en 英文 | *string* | `en` | - |
+| session-from | 会话来源 | *string* | - | - |
+| send-message-title | 会话内消息卡片标题 | *string* | 当前标题 | - |
+| send-message-path | 会话内消息卡片点击跳转小程序路径 | *string* | 当前分享路径 | - |
+| send-message-img | sendMessageImg | *string* | 截图 | - |
+| show-message-card | 显示会话内消息卡片 | *string* | `false` | - |
 
 ### GoodsActionButton API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| text | 按钮文字 | `String` | - |
-| url | 跳转链接 | `String` | - |
-| link-type | 链接跳转类型，可选值为 `redirectTo` `switchTab` `reLaunch` | `String` | `navigateTo` |
-| id | 标识符 | `String` | - |
-| type | 按钮类型，可选值为 `primary` `warning` `danger` | `String` | `default` |
-| size | 按钮尺寸，可选值为 `normal` `large` `small` `mini` | `String` | `normal` |
-| disabled | 是否禁用按钮 | `Boolean` | `false` |
-| loading | 是否显示为加载状态 | `Boolean` | `false` |
-| open-type | 微信开放能力，具体支持可参考 [微信官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html) | `String` | - |
-| app-parameter | 打开 APP 时，向 APP 传递的参数 | `String` | - |
-| lang | 指定返回用户信息的语言，zh_CN 简体中文，<br>zh_TW 繁体中文，en 英文 | `String` | `en` |
-| session-from | 会话来源 | `String` | - |
-| send-message-title | 会话内消息卡片标题 | `String` | 当前标题 |
-| send-message-path | 会话内消息卡片点击跳转小程序路径 | `String` | 当前分享路径 |
-| send-message-img | sendMessageImg | `String` | 截图 |
-| show-message-card | 显示会话内消息卡片 | `String` | `false` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| text | 按钮文字 | *string* | - | - |
+| color | 按钮颜色，支持传入 `linear-gradient` 渐变色 | *string* | - | - |
+| url | 点击后跳转的链接地址 | *string* | - | - |
+| link-type | 链接跳转类型，可选值为 `redirectTo` `switchTab` `reLaunch` | *string* | `navigateTo` | - |
+| id | 标识符 | *string* | - | - |
+| type | 按钮类型，可选值为 `primary` `warning` `danger` | *string* | `default` | - |
+| size | 按钮尺寸，可选值为 `normal` `large` `small` `mini` | *string* | `normal` | - |
+| disabled | 是否禁用按钮 | *boolean* | `false` | - |
+| loading | 是否显示为加载状态 | *boolean* | `false` | - |
+| open-type | 微信开放能力，具体支持可参考 [微信官方文档](https://mp.weixin.qq.com/debug/wxadoc/dev/component/button.html) | *string* | - | - |
+| app-parameter | 打开 APP 时，向 APP 传递的参数 | *string* | - | - |
+| lang | 指定返回用户信息的语言，zh_CN 简体中文，<br>zh_TW 繁体中文，en 英文 | *string* | `en` | - |
+| session-from | 会话来源 | *string* | - | - |
+| send-message-title | 会话内消息卡片标题 | *string* | 当前标题 | - |
+| send-message-path | 会话内消息卡片点击跳转小程序路径 | *string* | 当前分享路径 | - |
+| send-message-img | sendMessageImg | *string* | 截图 | - |
+| show-message-card | 显示会话内消息卡片 | *string* | `false` | - |
 
 ### Events
 
 | 事件名 | 说明 | 参数 |
 |-----------|-----------|-----------|
 | click | 按钮点击事件回调 | - |
+
+### GoodsActionIcon Slot
+
+| 名称 | 说明 |
+|-----------|-----------|
+| icon | 自定义图标 |
 
 ### GoodsActionIcon 外部样式类
 

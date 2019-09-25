@@ -1,8 +1,9 @@
 @import '../common/style/var.less';
+@import '../common/style/theme.less';
 
 .van-action-sheet {
   max-height: 90% !important;
-  color: @text-color;
+  .theme(color, '@text-color');
 
   &__item,
   &__cancel {
@@ -10,10 +11,10 @@
     font-size: 16px;
     line-height: 50px;
     text-align: center;
-    background-color: @white;
+    .theme(background-color, '@white');
 
     &--hover {
-      background-color: @active-color;
+      .theme(background-color, '@active-color');
     }
   }
 
@@ -23,28 +24,28 @@
     &::before {
       display: block;
       height: 10px;
-      background-color: @background-color;
       content: ' ';
+      .theme(background-color, '@background-color');
     }
   }
 
   &__item--disabled {
-    color: @gray;
+    .theme(color, '@gray');
   }
 
   &__item--disabled&__item--hover {
-    background-color: @white;
+    .theme(background-color, '@white');
   }
 
   &__subname {
     margin-left: 5px;
     font-size: 12px;
-    color: @gray-darker;
+    .theme(color, '@gray-darker');
   }
 
   &__header {
-    font-size: 16px;
     font-weight: 500;
+    font-size: 16px;
     line-height: 44px;
     text-align: center;
   }
@@ -56,6 +57,6 @@
     padding: 0 15px;
     font-size: 18px !important;
     line-height: inherit !important;
-    color: @gray-dark;
+    .theme(color, '@gray-dark');
   }
 }

@@ -18,7 +18,7 @@ VantComponent({
       value: {}
     },
     columnsNum: {
-      type: [String, Number],
+      type: null,
       value: 3
     }
   },
@@ -37,16 +37,16 @@ VantComponent({
     areaList: 'setValues',
 
     columnsNum(value: number) {
-      this.set({
+      this.setData({
         displayColumns: this.data.columns.slice(0, +value)
       });
     }
   },
 
   mounted() {
-    setTimeout(()=>{
-      this.setValues()
-    }, 0)
+    setTimeout(() => {
+      this.setValues();
+    }, 0);
   },
 
   methods: {
@@ -205,8 +205,8 @@ VantComponent({
       return area;
     },
 
-    reset() {
-      this.code = '';
+    reset(code) {
+      this.code = code || '';
       return this.setValues();
     }
   }

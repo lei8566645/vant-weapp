@@ -2,7 +2,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -46,6 +46,18 @@ Page({
 });
 ```
 
+### 自定义样式
+可以通过 `active-icon` 和 `active-color` 属性设置激活状态下的图标和颜色
+
+```html
+<van-steps
+  steps="{{ steps }}"
+  active="{{ active }}"
+  active-icon="success"
+  active-color="#38f"
+/>
+```
+
 ### 竖向步骤条
 可以通过设置`direction`属性来改变步骤条的显示方式
 
@@ -54,17 +66,21 @@ Page({
   steps="{{ steps }}"
   active="{{ active }}"
   direction="vertical"
-  active-color="#f44"
+  active-color="#ee0a24"
 />
 ```
 
+## API
+
 ### Steps API
 
-| 参数 | 说明 | 类型 | 默认值 |
-|-----------|-----------|-----------|-------------|
-| active | 当前步骤 | `Number` | 0 |
-| direction | 显示方向，可选值为 `horizontal` `vertical` | `String` | `horizontal` |
-| active-color | 激活状态颜色 | `String` | `#07c160` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|-----------|-----------|-----------|-------------|-------------|
+| active | 当前步骤 | *number* | 0 | - |
+| direction | 显示方向，可选值为 `horizontal` `vertical` | *string* | `horizontal` | - |
+| active-color | 激活状态颜色 | *string* | `#07c160` | - |
+| active-icon | 激活状态底部图标，可选值见 [Icon 组件](/#/icon) | *string* | `checked` | - |
+| inactive-icon | 未激活状态底部图标，可选值见 [Icon 组件](/#/icon) | *string* | - | - |
 
 ### 外部样式类
 

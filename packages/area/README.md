@@ -6,7 +6,7 @@
 
 ### 引入
 
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -41,19 +41,21 @@
 <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" title="标题" />
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| value | 当前选中的省市区`code` | `String` | - |
-| title | 顶部栏标题 | `String` | - |
-| area-list | 省市区数据，格式见下方 | `Object` | - |
-| columns-num | 省市区显示列数，3-省市区，2-省市，1-省 | `String | Number` | `3` |
-| loading | 是否显示加载状态 | `Boolean` | `false` |
-| item-height | 选项高度 | `Number` | `44` |
-| visible-item-count | 可见的选项个数 | `Number` | `5` |
-| confirm-button-text | 确认按钮文字 | `String` | `确认` |
-| cancel-button-text | 取消按钮文字 | `String` | `取消` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| value | 当前选中的省市区`code` | *string* | - | - |
+| title | 顶部栏标题 | *string* | - | - |
+| area-list | 省市区数据，格式见下方 | *object* | - | - |
+| columns-num | 省市区显示列数，3-省市区，2-省市，1-省 | *string \| number* | `3` | - |
+| loading | 是否显示加载状态 | *boolean* | `false` | - |
+| item-height | 选项高度 | *number* | `44` | - |
+| visible-item-count | 可见的选项个数 | *number* | `5` | - |
+| confirm-button-text | 确认按钮文字 | *string* | `确认` | - |
+| cancel-button-text | 取消按钮文字 | *string* | `取消` | - |
 
 ### Events
 
@@ -65,11 +67,11 @@
 
 ### 方法
 
-通过 selectComponent 可以获取到 area 实例并调用实例方法
+通过 selectComponent 可以获取到 Area 实例并调用实例方法
 
 | 方法名 | 参数 | 返回值 | 介绍 |
 |-----------|-----------|-----------|-------------|
-| reset | - | - | 重置所有选项到第一项 |
+| reset | code: string | - | 根据 code 重置所有选项，若不传 code，则重置到第一项 |
 
 ### 省市区列表数据格式
 

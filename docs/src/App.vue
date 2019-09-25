@@ -3,6 +3,7 @@
     active="小程序组件"
     :config="config"
     :github="github"
+    :versions="versions"
     :simulator="simulator"
   >
     <router-view />
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import docConfig, { github } from './doc.config';
+import docConfig, { github, versions } from './doc.config';
 
 const UNSHARED = [
   'common',
@@ -23,7 +24,8 @@ const UNSHARED = [
 export default {
   data() {
     return {
-      github
+      github,
+      versions
     };
   },
 
@@ -33,10 +35,15 @@ export default {
     },
 
     simulator() {
+      let prefix = '';
       const { path } = this.$route.meta;
 
+      if (location.hostname === '0.0.0.0' || location.hostname === 'localhost') {
+        prefix = 'https://youzan.github.io';
+      }
+
       if (!UNSHARED.includes(path)) {
-        return `/vant/mobile.html?hide_nav=1&weapp=1#/zh-CN/${path}`;
+        return `${prefix}/vant/mobile.html?hide_nav=1&weapp=1#/zh-CN/${path}`;
       }
 
       return `./preview.html#${path}`;

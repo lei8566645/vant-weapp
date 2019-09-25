@@ -1,7 +1,8 @@
 # Rate 评分
 
 ### 引入
-在`app.json`或`index.json`中引入组件，默认为`ES6`版本，`ES5`引入方式参见[快速上手](#/quickstart)
+
+在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](#/quickstart#yin-ru-zu-jian)
 
 ```json
 "usingComponents": {
@@ -47,7 +48,7 @@ Page({
 <van-rate
   value="{{ value }}"
   size="{{ 25 }}"
-  color="#f44"
+  color="#ee0a24"
   void-color="#eee"
   void-icon="star"
   bind:change="onChange"
@@ -55,12 +56,13 @@ Page({
 ```
 
 ### 半星
+
 ```html
 <van-rate
   value="{{ value }}"
   size="{{ 25 }}"
   allow-half
-  color="#f44"
+  color="#ee0a24"
   void-color="#eee"
   void-icon="star"
   bind:change="onChange"
@@ -97,22 +99,26 @@ Page({
 />
 ```
 
+## API
+
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-|------|------|------|------|
-| name | 在表单内提交时的标识符 | `String` | - |
-| value | 当前分值 | `Number` | - |
-| count | 图标总数 | `Number` | `5` |
-| size | 图标大小 (px) | `Number` | `20` |
-| color | 选中时的颜色 | `String` | `#ffd21e` |
-| void-color | 未选中时的颜色 | `String` | `#c7c7c7` |
-| icon | 选中时的图标名称或图片链接，可选值见 Icon 组件 | `String` | `star` |
-| void-icon | 未选中时的图标名称或图片链接，可选值见 Icon 组件 | `String` | `star-o` |
-| allow-half | 是否允许半选 | `Boolean` | `false` |
-| readonly | 是否为只读状态 | `Boolean` | `false` |
-| disabled | 是否禁用评分 | `Boolean` | `false` |
-| disabled-color | 禁用时的颜色 | `String` | `#bdbdbd` |
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+|------|------|------|------|------|
+| name | 在表单内提交时的标识符 | *string* | - | - |
+| value | 当前分值 | *number* | - | - |
+| count | 图标总数 | *number* | `5` | - |
+| size | 图标大小，默认单位为 `px` | *string \| number* | `20px` | - |
+| gutter | 图标间距，默认单位为 `px` | *string \| number* | `4px` |
+| color | 选中时的颜色 | *string* | `#ffd21e` | - |
+| void-color | 未选中时的颜色 | *string* | `#c7c7c7` | - |
+| icon | 选中时的图标名称或图片链接，可选值见 [Icon 组件](/#/icon) | *string* | `star` | - |
+| void-icon | 未选中时的图标名称或图片链接，可选值见 [Icon 组件](/#/icon) | *string* | `star-o` | - |
+| allow-half | 是否允许半选 | *boolean* | `false` | - |
+| readonly | 是否为只读状态 | *boolean* | `false` | - |
+| disabled | 是否禁用评分 | *boolean* | `false` | - |
+| disabled-color | 禁用时的颜色 | *string* | `#bdbdbd` | - |
+| touchable | 是否可以通过滑动手势选择评分 | *boolean* | `true` | - |
 
 ### Events
 
